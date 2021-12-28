@@ -3,7 +3,7 @@ import { sendEmail } from "../controller/email.js";
 import { getByPriceOneHour } from "../utils/api-manager/binance.js";
 import config from "../config.js";
 const task = () => {
-  cron.schedule("0 0 23 * * *", async () => {
+  cron.schedule(config.scheduleTime, async () => {
     try {
       console.log("Running job every - second job", new Date());
       let result = await getByPriceOneHour();
@@ -22,7 +22,7 @@ const task = () => {
         "<table cellpadding='2px' cellspacing='2px' border='1'><th>open price</th><th>high price</th><th>low price</th><th>close price</th><th>open time</th><th>close time</th>" +
         htmlTemplate +
         "</table > ";
-      await sendEmail("From Noe ADA", "waleedejaz9@gmail.com", response);
+      await sendEmail("From Noe ADA", config.TO, response);
     } catch (e) {
       res.send({
         error: e,

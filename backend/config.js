@@ -11,4 +11,6 @@ export default {
   PORT: process.env.PORT || 3000,
   user: process.env.user,
   pass: process.env.pass,
+  TO: process.env.TO,
+  scheduleTime: process.env.scheduleTime,
 };
