@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <title>ADA</title>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+        import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
+        var s = io("ws://localhost:3000", { transports: ['websocket', 'polling', 'flashsocket'] });
+        s.on('getAskAndBidPrice', function (e) {
+            document.getElementById('dvÄskPrice').innerHTML = + e.askPrice + "";
+            document.getElementById('dvBidPrice').innerHTML = + e.bidPrice + "";
+        });
+    </script>
+</head>
+
+<body>
+    <div id="root">
+        <div class="flex justify-evenly bg-blue-900">
+            <div class="p-3 flex">
+                <h1 class="text-xl font-bold text-gray-300">Sell Price<span
+                        class="pb-1 pl-3 pr-3 text-xl  text-gray-400 font-thin">( ask price ):</span></h1><span
+                    id="dvÄskPrice" class="pb-1 pl-3 pr-3 text-xl  text-gray-300 font-base">
+                </span>
+            </div>
+            <h1 class="font-bold text-gray-300 pb-1 pl-3 pr-3 pt-3 text-xl  ">ADA</h1>
+            <div class="p-3 flex">
+                <h1 class="text-xl font-bold text-gray-300 ">Buy Price<span
+                        class="pb-1 pl-3 pr-3 text-xl  text-gray-400 font-thin">( bid price ):</span></h1><span
+                    id="dvBidPrice" class="pb-1 pl-3 pr-3 text-xl  text-gray-300 font-base">
+                </span>
+            </div>
+        </div>
+
+        <div class="tradingview-widget-container">
+            <div id="tradingview_74048"></div>
+            <div class="tradingview-widget-copyright">
+                <a href="https://www.tradingview.com/symbols/BITFINEX-ADAUSD/" rel="noopener" target="_blank"></a>
+            </div>
+            <script type="text/javascript">
+                new TradingView.widget(
+                    {
+                        "autosize": true,
+                        "symbol": "BITFINEX:ADAUSD",
+                        "interval": "4H",
+                        "timezone": "Europe/Zurich",
+                        "theme": "Dark",
+                        "style": "1",
+                        "locale": "en",
+                        "toolbar_bg": "#f1f3f6",
+                        "enable_publishing": false,
+                        "hide_side_toolbar": false,
+                        "allow_symbol_change": false,
+                        "studies": [
+                            "RSI@tv-basicstudies",
+                            "StochasticRSI@tv-basicstudies"
+                        ],
+                        "container_id": "tradingview_74048"
+                    }
+                );
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

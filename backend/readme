@@ -1,0 +1,19 @@
+So this scope is workable?
+
+Requirements:
+
+- Must calculate the 4h trendline
+- Must defined the TFS alert.
+- Wait for 4h to close over the trendlinje
+- Output alert, then the above happens
+
+The output should contain the following:
+- Buy price ----------------------------------------- done
+- Must identify the daily support on a coin ----------done
+- expected sell price ------------------------------- done
+- data and time of pattern detection.
+- The chart defined with the lines drawn on it
+    - Support, Trendlines, and what pattern is been detected
+
+Optional:
+- Support automatic buy of the coin, and sell at specific profit defined in %
