@@ -1,6 +1,7 @@
 import cron from "node-cron";
 import { sendEmail } from "../controller/email.js";
 import { getByPriceOneHour } from "../utils/api-manager/binance.js";
+import config from "../config.js";
 const task = () => {
   cron.schedule("0 0 23 * * *", async () => {
     try {
